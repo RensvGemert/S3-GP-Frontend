@@ -11,9 +11,9 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Schedule',
-        path: '/schedule',
-        icon: <AiIcons.AiFillCalendar />,
+        title: 'Users',
+        path: '/users',
+        icon: <FaIcons.FaUser />,
         cName: 'nav-text'
     },
     {

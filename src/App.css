@@ -7,7 +7,7 @@
   font-family: 'Lato', sans-serif;
 }
 
-.home, .schedule, .products {
+.home .accounts .products {
   display: flex;
   height: 90vh;
   align-items: center;
