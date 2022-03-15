@@ -1,4 +1,4 @@
-.navbar {
+ .navbar {
     background-color: #28506D;
     height: 80px;
     display: flex;
@@ -22,7 +22,7 @@
     top: 0px;
     left: -100%;
     transition: 850ms;
-}
+} 
 
 .nav-menu.active {
     left: 0;
@@ -74,4 +74,4 @@ span {
 .pim{
     margin-left: 5%;
     color: white;
-}
+} 

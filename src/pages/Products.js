@@ -30,6 +30,7 @@ render() {
           <tr>
           <th>Id:</th>
           <th>Title:</th>
+          <th>Description:</th>
           </tr>  
         </thead>
 
@@ -39,6 +40,7 @@ render() {
               <tr key={product.productId}>
                 <td> {product.productId} </td>
                 <td> {product.productTitle} </td>
+                <td> {product.productDescription} </td>
                 </tr>
             ))
           }

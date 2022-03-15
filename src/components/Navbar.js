@@ -17,6 +17,7 @@ function Navbar() {
         <div className='navbar'>     
             <Link to="#" className='menu-bars'>
                 <FaIcons.FaBars onClick={showSidebar} />
+
             </Link>
             <h1 className='pim'>PIM</h1>
         </div>
