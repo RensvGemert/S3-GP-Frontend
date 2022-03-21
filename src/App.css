@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2family=Lato&display=swap'); */
+@import url('https://fonts.googleapis.com/css2family=Lato&display=swap');
 
 * {
   box-sizing: border-box;
@@ -8,15 +8,16 @@
 }
 
 :root {
-  background-color: #19191D;
+  background-color: white;
 }
 
 .home .accounts .products {
   display: flex;
-  height: 90vh;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+  flex-direction: column;
 }
 
 html {
@@ -24,14 +25,8 @@ html {
   color: white;
 }
 
-h1 {
-  background-color: #19191D;
-  color: white;;
-}
-
 .introduction-header {
   font-size: 70px;
   text-align: center;
   padding-top: 15%;
 }
-
