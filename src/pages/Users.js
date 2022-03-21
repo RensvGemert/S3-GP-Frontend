@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css-table/css/style.css';
 import '../css-table/css/bootstrap.min.css';
+import '../css-table/css/bootstrap.min.css.map';
 import '../css-table/fonts/icomoon/style.css';
 
 
@@ -28,20 +29,20 @@ render() {
     return (
       <div className="Users">
 
-<div class="content">
+<div className="content">
     
-    <div class="container">
-      <h2 class="mb-5">Users</h2>
+    <div className="container">
+      <h2 className="mb-5">Users</h2>
       
-      <div class="table-responsive custom-table-responsive">
+      <div className="table-responsive custom-table-responsive">
 
-        <table class="table custom-table">
+        <table className="table custom-table">
           <thead>
             <tr>  
               <th scope="col">
-                <label class="control control--checkbox">
-                  <input type="checkbox"  class="js-check-all"/>
-                  <div class="control__indicator"></div>
+                <label className="control control--checkbox">
+                  <input type="checkbox"  className="js-check-all"/>
+                  <div className="control__indicator"></div>
                 </label>
               </th>
               <th scope="col">Id</th>
@@ -54,9 +55,9 @@ render() {
             this.state.userItems.map(user => (
               <tr key={user.id}>
                  <th scope="row">
-                  <label class="control control--checkbox">
+                  <label className="control control--checkbox">
                   <input type="checkbox"/>
-                  <div class="control__indicator"></div>
+                  <div className="control__indicator"></div>
                   </label>
               </th>
                 <td> {user.id} </td>
@@ -76,7 +77,6 @@ render() {
     <script src="../pages/css-table/js/popper.min.js"></script>
     <script src="../pages/css-table/js/bootstrap.min.js"></script>
     <script src="../pages/css-table/js/main.js"></script>
-
      </div>
     );
    }
