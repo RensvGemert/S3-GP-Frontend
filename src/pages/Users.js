@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import '../css-table/css/style.css';
+import '../css-table/css/bootstrap.min.css';
+import '../css-table/fonts/icomoon/style.css';
+
 
 class Users extends Component {
 
@@ -24,29 +28,55 @@ render() {
     return (
       <div className="Users">
 
-      <table>
+<div class="content">
+    
+    <div class="container">
+      <h2 class="mb-5">Users</h2>
+      
+      <div class="table-responsive custom-table-responsive">
 
-        <thead>   
-          <tr>
-          <th>Id:</th>
-          <th>Name:</th>
-          <th>Email:</th>
-          </tr>  
-        </thead>
-
-        <tbody>
+        <table class="table custom-table">
+          <thead>
+            <tr>  
+              <th scope="col">
+                <label class="control control--checkbox">
+                  <input type="checkbox"  class="js-check-all"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </th>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody>
           {
             this.state.userItems.map(user => (
               <tr key={user.id}>
+                 <th scope="row">
+                  <label class="control control--checkbox">
+                  <input type="checkbox"/>
+                  <div class="control__indicator"></div>
+                  </label>
+              </th>
                 <td> {user.id} </td>
                 <td> {user.name} </td>
                 <td> {user.email} </td>
-                </tr>
+              </tr>
             ))
           }
-        </tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+    
 
-      </table>
+    <script src="../pages/css-table/js/jquery-3.3.1.min.js"></script>
+    <script src="../pages/css-table/js/popper.min.js"></script>
+    <script src="../pages/css-table/js/bootstrap.min.js"></script>
+    <script src="../pages/css-table/js/main.js"></script>
+
      </div>
     );
    }

@@ -7,10 +7,19 @@
   font-family: 'Lato', sans-serif;
 }
 
+:root {
+  background-color: #19191D;
+}
+
 .home .accounts .products {
   display: flex;
   height: 90vh;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+}
+
+html {
+  background-color: #19191D;
+  color: white;
 }
