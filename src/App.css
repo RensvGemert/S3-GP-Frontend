@@ -23,3 +23,15 @@ html {
   background-color: #19191D;
   color: white;
 }
+
+h1 {
+  background-color: #19191D;
+  color: white;;
+}
+
+.introduction-header {
+  font-size: 70px;
+  text-align: center;
+  padding-top: 15%;
+}
+

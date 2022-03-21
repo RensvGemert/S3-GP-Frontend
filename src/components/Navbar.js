@@ -19,7 +19,7 @@ function Navbar() {
                 <FaIcons.FaBars onClick={showSidebar} />
 
             </Link>
-            <h1 className='pim'>PIM</h1>
+            <h2 className='pim'>PIM</h2>
         </div>
         
         <nav className={ sidebar ? 'nav-menu active' : 'nav-menu'}>
