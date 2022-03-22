@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Table} from 'react-bootstrap';
 
 class Products extends Component {
 
@@ -23,31 +24,29 @@ render() {
 
     return (
       <div className="Products">
+      <h2 className='product-header'>Products</h2>
+        <Table striped bordered hover>
+          <thead>
+            <tr>  
+              <th>Id</th>
+              <th>Title</th>
+              <th>Description</th>
+            </tr>
+          </thead>
 
-      <table>
-
-        <thead>   
-          <tr>
-          <th>Id:</th>
-          <th>Title:</th>
-          <th>Description:</th>
-          </tr>  
-        </thead>
-
-        <tbody>
+          <tbody>
           {
             this.state.productItems.map(product => (
-              <tr key={product.productId}>
-                <td> {product.productId} </td>
+              <tr key={product.productId}>               
+                <td> {product.productId} </td> 
                 <td> {product.productTitle} </td>
                 <td> {product.productDescription} </td>
                 </tr>
             ))
           }
-        </tbody>
-
-      </table>
-     </div>
+          </tbody>
+        </Table>
+        </div>
     );
    }
   }

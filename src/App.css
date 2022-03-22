@@ -7,10 +7,26 @@
   font-family: 'Lato', sans-serif;
 }
 
+:root {
+  background-color: white;
+}
+
 .home .accounts .products {
   display: flex;
-  height: 90vh;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+  flex-direction: column;
+}
+
+html {
+  background-color: #19191D;
+  color: white;
+}
+
+.introduction-header {
+  font-size: 70px;
+  text-align: center;
+  padding-top: 15%;
 }
