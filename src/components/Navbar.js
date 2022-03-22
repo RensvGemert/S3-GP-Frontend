@@ -17,7 +17,7 @@ function Navbar() {
             <Link to="#" className='menu-bars'>
                 <FaIcons.FaBars onClick={showSidebar} />
             </Link>              
-            <a className="navbar-brand" href="/">Piada PIM</a> 
+            <a className="navbar-brand" href="/">WoC PIM</a> 
         </div>
         
         
