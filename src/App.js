@@ -1,25 +1,16 @@
-// import { Router } from 'react-router-dom';
-import './App.css';
-import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';  
-import Home from './pages/Home';
-import Users from './pages/Users';
-import Products from './pages/Products';
+// in src/App.js
+import * as React from "react";
+import { Admin, Resource, ListGuesser } from 'react-admin';
+import jsonServerProvider from 'ra-data-json-server';
+import restProvider from 'ra-data-simple-rest'
+import { ProductList } from './components/ProductList'
 
-
-function App() {
-  return (
-    <>
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path='/' exact element={<Home/>} /> 
-        <Route path='/users' element={<Users/>} /> 
-        <Route path='/products' element={<Products/>} /> 
-      </Routes>
-    </Router>
-    </>
-  );
-}
+const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
+const App = () => (
+    <Admin dataProvider={dataProvider}>
+        <Resource name="users" list={ListGuesser} />
+        <Resource name="posts" list={ListGuesser} />
+    </Admin>
+);
 
 export default App;
