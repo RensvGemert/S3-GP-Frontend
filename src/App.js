@@ -5,11 +5,11 @@ import jsonServerProvider from 'ra-data-json-server';
 import restProvider from 'ra-data-simple-rest'
 import { ProductList } from './components/ProductList'
 
-const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
+const dataProvider = jsonServerProvider('http://localhost:8080/api');
 const App = () => (
     <Admin dataProvider={dataProvider}>
         <Resource name="users" list={ListGuesser} />
-        <Resource name="posts" list={ListGuesser} />
+        <Resource name="products" list={ListGuesser} />
     </Admin>
 );
 
