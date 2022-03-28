@@ -1,15 +1,17 @@
-// in src/App.js
 import * as React from "react";
-import { Admin, Resource, ListGuesser } from 'react-admin';
+import { Admin, Resource, ListGuesser, List } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
-import restProvider from 'ra-data-simple-rest'
-import { ProductList } from './components/ProductList'
+import ProductList from './components/ProductList'
+import UserList from "./components/UserList";
+import UserEdit from "./components/UserEdit";
+import ProductEdit from "./components/ProductEdit";
+import UserCreate from "./components/UserCreate";
 
 const dataProvider = jsonServerProvider('http://localhost:8080/api');
 const App = () => (
     <Admin dataProvider={dataProvider}>
-        <Resource name="users" list={ListGuesser} />
-        <Resource name="products" list={ListGuesser} />
+        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} />
+        <Resource name="products" list={ProductList} edit={ProductEdit} />
     </Admin>
 );
 
