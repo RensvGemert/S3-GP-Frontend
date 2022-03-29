@@ -5,7 +5,7 @@ import {
 
 
 
-const UserCreate = (props) => (
+const ProductCreate = (props) => (
     
     /* this.state = {
          notify: useNotify(),
@@ -16,7 +16,7 @@ const UserCreate = (props) => (
 
     const onSuccess = ({ data }) => {
         this.state.notify(`New user created! `);
-        redirect(`/users?filter=%7B"id"%3A${data.id}`);
+        redirect(`/products?filter=%7B"id"%3A${data.id}`);
         refresh();
     }; */
 
@@ -33,4 +33,4 @@ const UserCreate = (props) => (
     
 );
 
-export default UserCreate
+export default ProductCreate

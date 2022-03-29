@@ -5,11 +5,13 @@ import {
 
 const UserEdit = (props) => (
     <Edit {...props}>
+        <div>
         <SimpleForm>
             <TextInput disabled source='id' />
             <TextInput source='name' />
             <TextInput source='email' />
         </SimpleForm>
+        </div>   
     </Edit>
 );
 
