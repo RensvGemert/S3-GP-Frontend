@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import {
     Create, useNotify, useRefresh, useRedirect, TextInput, SimpleForm
 } from 'react-admin';
@@ -24,7 +24,7 @@ const UserCreate = (props) => (
     /* return ( */
         <Create {...props} title='Create new user' /* onSuccess={onSuccess} */>
             <SimpleForm>
-                <TextInput disabled source='id' defaultValue='1' />
+                <TextInput disabled source='id' />
                 <TextInput source='name' />
                 <TextInput source='email' />
             </SimpleForm>
