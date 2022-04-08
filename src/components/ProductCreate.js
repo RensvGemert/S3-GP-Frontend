@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Create, useNotify, useRefresh, useRedirect, TextInput, SimpleForm
+    Create, useNotify, useRefresh, useRedirect, TextInput, NumberInput, SimpleForm
 } from 'react-admin';
 import RichTextInput from 'ra-input-rich-text';
 
@@ -22,6 +22,9 @@ const ProductCreate = props => {
         <Create {...props} title='Create new product' onSuccess={onSuccess}>
             <SimpleForm>
                 <TextInput source='title' />
+                <NumberInput source='price' step={0.01} />
+                <NumberInput source='discount' min={0} max={100} />
+                <TextInput source='image' type='url' />
                 <RichTextInput source='description' />
             </SimpleForm>
         </Create>
