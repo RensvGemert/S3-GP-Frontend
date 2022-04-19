@@ -4,27 +4,25 @@ import {
     AUTH_LOGOUT,
     AUTH_ERROR,
     AUTH_CHECK,
-  } from 'react-admin'; 
-  import { createBrowserHistory } from "history";
-  const history = createBrowserHistory();
-  
-   const homepage = () => {
-    
-   history.push('/home');// redirect function to homepage
-  }
-  export default (type, params, props) => {
-  
+} from 'react-admin';
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
+
+
+export default (type, params, props) => {
+
     if (type === AUTH_LOGIN) {
         const { username, password } = params;
-        
-  // simple user username password, redirect funtion
+
+        // simple user username password, redirect function
         if (username === 'user' && password === 'password') {
             localStorage.setItem('role', 'user');
             localStorage.removeItem('not_authenticated');
-            homepage();
+
             return Promise.resolve();
-          }
-   //admin  role   username and password
+        }
+        //admin  role   username and password
         if (username === 'admin' && password === 'password') {
             localStorage.setItem('role', 'admin');
             localStorage.removeItem('not_authenticated');
@@ -53,6 +51,6 @@ import {
         const role = localStorage.getItem('role');
         return Promise.resolve(role);
     }
-  
+
     return Promise.reject('Unknown method');
-  };
+};

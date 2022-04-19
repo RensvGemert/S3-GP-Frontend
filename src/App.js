@@ -9,7 +9,7 @@ import UserCreate from "./components/UserCreate";
 import ProductCreate from "./components/ProductCreate";
 
 import authProvider from './components/authProvider';
-
+import Dashboard from './components/Dashboard';
 
 const fetchJson = (url, options = {}) => {
     if (!options.headers) {
@@ -21,15 +21,27 @@ const fetchJson = (url, options = {}) => {
 }
 
 const dataProvider = jsonServerProvider('http://localhost:8080/api', fetchJson);
+const theme = {
+    palette: {
+        type: 'dark',
+        secondary: {
+            main:"#0089c1"
+        }
+    },
+};
 
 const App = () => (
     <Admin 
+        style={{backgroundColor: 'black'}}
+        theme={theme}
+        dashboard={Dashboard}
         authProvider={authProvider}
-        dataProvider={dataProvider}  
-    >
+        dataProvider={dataProvider} >   
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} />
         <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} />
     </Admin>
 );
+
+
 
 export default App;
