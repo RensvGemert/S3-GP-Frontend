@@ -22,12 +22,12 @@ const fetchJson = (url, options = {}) => {
 
 const dataProvider = jsonServerProvider('http://localhost:8080/api', fetchJson);
 
-const MyHeaderMenu = () => <UserMenu> <LoginButton /> <LogoutButton /> </UserMenu>;
+const MyHeaderMenu = () => <UserMenu> <LoginButton /> <LogoutButton /></UserMenu>;
 
 
 const App = () => (
     <>
-    <Admin dataProvider={dataProvider}>
+    <Admin layout={ MyHeaderMenu } dataProvider={dataProvider}>
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} />
         <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} />
     </Admin>
