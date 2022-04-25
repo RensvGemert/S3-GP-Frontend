@@ -15,7 +15,7 @@ export default (type, params, props) => {
     if (type === AUTH_LOGIN) {
         const { username, password } = params;
 
-        // simple user username password, redirect function
+        // simple user username password, redirect function.
         if (username === 'user' && password === 'password') {
             localStorage.setItem('role', 'user');
             localStorage.removeItem('not_authenticated');
