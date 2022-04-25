@@ -17,23 +17,23 @@ export default (type, params, props) => {
 
         // simple user username password, redirect function
         if (username === 'user' && password === 'password') {
-            localStorage.setItem('role', 'user');
-            localStorage.removeItem('not_authenticated');
+            sessionStorage.setItem('role', 'user');
+            sessionStorage.removeItem('not_authenticated');
 
             return Promise.resolve();
         }
         //admin  role   username and password
         if (username === 'admin' && password === 'password') {
-            localStorage.setItem('role', 'admin');
-            localStorage.removeItem('not_authenticated');
+            sessionStorage.setItem('role', 'admin');
+            sessionStorage.removeItem('not_authenticated');
             return Promise.resolve();
         }
-        localStorage.setItem('not_authenticated', true);
+        sessionStorage.setItem('not_authenticated', true);
         return Promise.reject();
     }
     if (type === AUTH_LOGOUT) {
-        localStorage.setItem('not_authenticated', true);
-        localStorage.removeItem('role');
+        sessionStorage.setItem('not_authenticated', true);
+        sessionStorage.removeItem('role');
         return Promise.resolve();
     }
     if (type === AUTH_ERROR) {
@@ -43,12 +43,12 @@ export default (type, params, props) => {
             : Promise.resolve();
     }
     if (type === AUTH_CHECK) {
-        return localStorage.getItem('not_authenticated')
+        return sessionStorage.getItem('not_authenticated')
             ? Promise.reject()
             : Promise.resolve();
     }
     if (type === AUTH_GET_PERMISSIONS) {
-        const role = localStorage.getItem('role');
+        const role = sessionStorage.getItem('role');
         return Promise.resolve(role);
     }
 
