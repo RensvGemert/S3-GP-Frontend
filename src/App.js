@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Admin, Resource, fetchUtils} from 'react-admin';
+import { Admin, fetchUtils } from 'react-admin';
+import { Resource } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import ProductList from './components/ProductList'
 import UserList from "./components/UserList";
@@ -7,7 +8,6 @@ import UserEdit from "./components/UserEdit";
 import ProductEdit from "./components/ProductEdit";
 import UserCreate from "./components/UserCreate";
 import ProductCreate from "./components/ProductCreate";
-
 import authProvider from './components/authProvider';
 import Dashboard from './components/Dashboard';
 
@@ -25,20 +25,26 @@ const theme = {
     palette: {
         type: 'dark',
         secondary: {
-            main:"#0089c1"
+            main: "#0089c1"
         }
     },
 };
 
 const App = () => (
-    <Admin 
-        style={{backgroundColor: 'black'}}
+    <Admin
+        style={{ backgroundColor: 'black' }}
         theme={theme}
         dashboard={Dashboard}
         authProvider={authProvider}
-        dataProvider={dataProvider} >   
-        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} />
-        <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} />
+        dataProvider={dataProvider}
+        requireAuth >
+        {sessionStorage.getItem('role') === "admin" ? (
+            <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} />
+           
+        ) : (
+            <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} />
+        )
+        }
     </Admin>
 );
 
