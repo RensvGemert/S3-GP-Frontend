@@ -2,7 +2,7 @@ import React from 'react'
 import { List, Datagrid, TextField, RichTextField, EditButton, DeleteButton, Filter, SearchInput, NumberField } from 'react-admin'
 
 const CompanyFilter = (props) => (<Filter {...props}>
-  <SearchInput placeholder='User Email' source='email' resettable alwaysOn />
+  <SearchInput placeholder='Company Name' source='companyName' resettable alwaysOn />
 </Filter>)
 
 function CompanyList(props) {
