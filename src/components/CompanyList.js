@@ -10,9 +10,9 @@ function CompanyList(props) {
     <List {...props} filters={<CompanyFilter />}>
         <Datagrid>
             <TextField source='id' />
-            <TextField source='companyName' />
-            <RichTextField source='companyDescription' />
-            <NumberField source='companyRole' />
+            <TextField source='name' />
+            <RichTextField source='description' />
+            <NumberField source='role' />
             <TextField source='createdAt' />
             <EditButton basePath='/company' />
             <DeleteButton basePath='/company' />

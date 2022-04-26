@@ -12,6 +12,7 @@ function UserList(props) {
             <TextField source='id' />
             <TextField source='name' />
             <TextField source='email' />
+            <TextField source='role' />
             <EditButton basePath='/users' />
             <DeleteButton basePath='/users' />
         </Datagrid>
