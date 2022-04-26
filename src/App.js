@@ -10,6 +10,7 @@ import UserCreate from "./components/UserCreate";
 import ProductCreate from "./components/ProductCreate";
 import authProvider from './components/authProvider';
 import Dashboard from './components/Dashboard';
+import MyLoginPage from './components/MyLoginPage';
 
 const fetchJson = (url, options = {}) => {
     if (!options.headers) {
@@ -20,7 +21,18 @@ const fetchJson = (url, options = {}) => {
     return fetchUtils.fetchJson(url, options);
 }
 
-const dataProvider = jsonServerProvider('http://localhost:8080/api', fetchJson);
+const httpClient = (url, options = {}) => {
+    if (!options.headers) {
+        options.headers = new Headers({ Accept: 'application/json' });
+    }
+    const { token } = JSON.parse(localStorage.getItem('auth'));
+    options.headers.set('Authorization', `Bearer ${token}`);
+    return fetchUtils.fetchJson(url, options);
+};
+
+
+const dataProvider = jsonServerProvider('http://localhost:8080/api', fetchJson, httpClient);
+
 const theme = {
     palette: {
         type: 'dark',
@@ -35,16 +47,23 @@ const App = () => (
         style={{ backgroundColor: 'black' }}
         theme={theme}
         dashboard={Dashboard}
+        loginPage={MyLoginPage}
         authProvider={authProvider}
         dataProvider={dataProvider}
         requireAuth >
-        {sessionStorage.getItem('role') === "admin" ? (
+
+        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} />
+        <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} />
+
+
+
+        {/* {sessionStorage.getItem('role') === "supplier" ? (
             <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} />
            
         ) : (
             <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} />
         )
-        }
+        } */}
     </Admin>
 );
 
