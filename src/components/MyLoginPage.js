@@ -1,68 +1,81 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import { useNotify, useRefresh, useRedirect } from 'react-admin';
+import { useNotify, useLogin, useRedirect } from 'react-admin';
+
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { Container, Row, Col } from 'react-bootstrap';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const MyLoginPage = () => {
 
-    const notify = useNotify();
-    const refresh = useRefresh();
-    const redirect = useRedirect();
-
-    const onSuccess = () => {
-        redirect(`/dashboard`);
-        notify(`Login Success!`);
-        refresh();
-    }
-
+    const [id, setId] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [id, setId] = useState('');
+    const login = useLogin();
+    const notify = useNotify();
+    const redirect = useRedirect();
 
     const LoginRequest = () => {
         axios.post('http://localhost:8080/api/users/login', {
             email,
             password
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          }).then(json => {
-              setId(json)
-          });
-        }
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .then(json => {
+                setId(json)
+            })
+            .catch(error => {
+                console.log(error.response)
+                console.log("invalid email or password")
+                notify('Invalid email or password')
+                redirect("/login")
+            });
+
+        console.log("succesfull login with email:" + email)
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        login({ email, password }).catch(() =>
+            notify('Invalid email or password'),
+        );
+    }
 
     return (
-        <div className="form" onSubmit={onSuccess}>
-            <form>
-                <div className="input-container">
-                    <label>Email </label>
-                    <input
-                        type="text"
-                        name="email"
-                        required
-                        onChange={(event) => {
-                            setEmail(event.target.value);
-                        }} />
+        <>
+            <Container style={{paddingTop: '30vh'}}>
+                <Row>
+                    <Col xs></Col>
+                    <Col xs={{ order: 12 }}>
+                    <Form onSubmit={handleSubmit} >
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" 
+                                onChange={e => setEmail(e.target.value)} />
+                        </Form.Group>
 
-                </div>
-                <div className="input-container">
-                    <label>Password </label>
-                    <input
-                        type="password"
-                        name="pass"
-                        required
-                        onChange={(event) => {
-                            setPassword(event.target.value);
-                        }} />
-                </div>
-                <div className="button-container">
-                    <input type="submit" onClick={LoginRequest}/>
-                </div>
-            </form>
-        </div>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" 
+                                onChange={e => setPassword(e.target.value)} />
+                        </Form.Group>
+                        <Button variant="primary" type="submit" onClick={LoginRequest}>
+                            Submit
+                        </Button>
+                    </Form>
+
+                    </Col>
+                    <Col xs={{ order: 1 }}></Col>
+                    
+                </Row>
+            </Container>
+        </>
     )
 }
 

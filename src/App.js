@@ -16,7 +16,6 @@ const fetchJson = (url, options = {}) => {
     if (!options.headers) {
         options.headers = new Headers({ Accept: 'application/json' });
     }
-    // add your own headers here
     options.headers.set('Access-Control-Allow-Origin', '*');
     return fetchUtils.fetchJson(url, options);
 }
@@ -31,7 +30,9 @@ const httpClient = (url, options = {}) => {
 };
 
 
-const dataProvider = jsonServerProvider('http://localhost:8080/api', fetchJson, httpClient);
+const dataProvider = jsonServerProvider('http://localhost:8080/api', fetchJson
+, httpClient
+);
 
 const theme = {
     palette: {
@@ -44,26 +45,15 @@ const theme = {
 
 const App = () => (
     <Admin
-        style={{ backgroundColor: 'black' }}
         theme={theme}
         dashboard={Dashboard}
         loginPage={MyLoginPage}
         authProvider={authProvider}
         dataProvider={dataProvider}
-        requireAuth >
-
-        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} />
-        <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} />
-
-
-
-        {/* {sessionStorage.getItem('role') === "supplier" ? (
-            <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} />
-           
-        ) : (
-            <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} />
-        )
-        } */}
+        requireAuth
+        >
+        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate}/>
+        <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate}/>
     </Admin>
 );
 
