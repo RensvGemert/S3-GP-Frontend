@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Datagrid, TextField, NumberField, DateField, EditButton, DeleteButton, Filter, SearchInput, RichTextField  } from 'react-admin';
+import { List, Datagrid, TextField, NumberField, EditButton, DeleteButton, Filter, SearchInput, RichTextField  } from 'react-admin';
 
 const ProductFilter = (props) => (<Filter {...props}>
   <SearchInput placeholder='Product Name' source='title' resettable alwaysOn />
