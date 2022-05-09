@@ -17,13 +17,16 @@ const ProductCreate = props => {
 
     
     return (
+        <>
         <Create {...props} title='Create new product' onSuccess={onSuccess}>
-            <SimpleForm>
-                <TextInput source='title' />
+        {localStorage.getItem('role') === 'supplier' ? (
+            <SimpleForm>            
+                <TextInput source='title' />         
                 <NumberInput source='price' step={0.01} />
                 <NumberInput source='discount' min={0} max={100} />
                 <TextInput source='image' type='url' />
                 <RichTextInput source='description' />
+
                 <ArrayInput source ='productFields' >
                     <SimpleFormIterator disableReordering>
                         <TextInput source='name' label='Productfield name'/>
@@ -34,7 +37,14 @@ const ProductCreate = props => {
                     </SimpleFormIterator>
                 </ArrayInput>
             </SimpleForm>
+            ) :    
+            <p>No Access</p>
+        }
         </Create>
+
+        
+
+        </>
     );
     
 };
