@@ -21,6 +21,9 @@ const theme = createTheme({
         }
   },
 });
+import simpleRestProvider from 'ra-data-simple-rest';
+import { FieldList } from "./components/FieldList";
+import { FieldCreate } from "./components/FieldCreate";
 
 const fetchJson = (url, options = {}) => {
     if (!options.headers) {
@@ -48,7 +51,7 @@ const App = () => (
     dashboard={Dashboard}>
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
         <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon}/>
-        <Resource name="fields" list={FieldList} />
+        <Resource name="fields" list={FieldList} create={FieldCreate} />
   </Admin>
 );
 
