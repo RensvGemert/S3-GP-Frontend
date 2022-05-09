@@ -9,6 +9,7 @@ import UserCreate from "./components/UserCreate";
 import ProductCreate from "./components/ProductCreate";
 import simpleRestProvider from 'ra-data-simple-rest';
 import { FieldList } from "./components/FieldList";
+import { FieldCreate } from "./components/FieldCreate";
 
 const fetchJson = (url, options = {}) => {
     if (!options.headers) {
@@ -25,7 +26,7 @@ const App = () => (
     <Admin dataProvider={dataProvider}>
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} />
         <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} />
-        <Resource name="fields" list={FieldList} />
+        <Resource name="fields" list={FieldList} create={FieldCreate} />
     </Admin>
 );
 
