@@ -1,12 +1,8 @@
 import React from 'react'
 import {
-    Create, useNotify, useRefresh, useRedirect, TextInput, NumberInput, SimpleForm
+    Create, useNotify, useRefresh, useRedirect, TextInput, NumberInput, SimpleForm, ArrayInput, SimpleFormIterator, SelectInput, ReferenceInput
 } from 'react-admin';
 import RichTextInput from 'ra-input-rich-text';
-
-import { usePermissions } from 'react-admin';
-import { Label } from '@mui/icons-material';
-
 
 const ProductCreate = props => {
     const notify = useNotify();
@@ -30,7 +26,16 @@ const ProductCreate = props => {
                 <NumberInput source='discount' min={0} max={100} />
                 <TextInput source='image' type='url' />
                 <RichTextInput source='description' />
-           
+
+                <ArrayInput source ='productFields' >
+                    <SimpleFormIterator disableReordering>
+                        <TextInput source='name' label='Productfield name'/>
+                        <TextInput source='value' label='Productfield value' />
+                        <ReferenceInput source='fieldId' reference="fields" label="Productfield ID">
+                            <SelectInput optionText="name" />
+                        </ReferenceInput>
+                    </SimpleFormIterator>
+                </ArrayInput>
             </SimpleForm>
             ) :    
             <p>No Access</p>

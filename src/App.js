@@ -48,6 +48,7 @@ const App = () => (
     dashboard={Dashboard}>
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
         <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon}/>
+        <Resource name="fields" list={FieldList} />
   </Admin>
 );
 
