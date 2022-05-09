@@ -7,11 +7,11 @@ export default {
         });
 
         if (username === 'retailer@gmail.com' && password === 'retailer') {
-            localStorage.setItem('role', 'retailer');
+            localStorage.setItem('role', '1');
         }
 
         if (username === 'supplier@gmail.com' && password === 'supplier') {
-            localStorage.setItem('role', 'supplier');
+            localStorage.setItem('role', '2');
         }
 
         return fetch(request)
