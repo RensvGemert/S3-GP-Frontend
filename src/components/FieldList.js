@@ -14,3 +14,5 @@ export const FieldList = props => (
         </Datagrid>
     </List>
 );
+
+export default FieldList
