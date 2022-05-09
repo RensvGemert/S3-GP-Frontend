@@ -4,7 +4,6 @@ import {
 } from 'react-admin';
 
 
-
 const UserCreate = props => {
     const notify = useNotify();
     const refresh = useRefresh();
