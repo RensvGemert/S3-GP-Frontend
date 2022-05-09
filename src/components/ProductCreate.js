@@ -23,7 +23,7 @@ const ProductCreate = props => {
     return (
         <>
         <Create {...props} title='Create new product' onSuccess={onSuccess}>
-        {localStorage.getItem('role') === 'admin' ? (
+        {localStorage.getItem('role') === 'supplier' ? (
             <SimpleForm>            
                 <TextInput source='title' />         
                 <NumberInput source='price' step={0.01} />
