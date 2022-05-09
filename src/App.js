@@ -10,6 +10,11 @@ import UserCreate from "./components/UserCreate";
 import ProductCreate from "./components/ProductCreate";
 import { createTheme } from '@material-ui/core/styles';
 import Dashboard from './components/Dashboard';
+import HomeIcon from '@mui/icons-material/Home';
+import PersonIcon from '@mui/icons-material/Person';
+import InventoryIcon from '@mui/icons-material/Inventory';
+
+
 
 const theme = createTheme({
   palette: {
@@ -44,8 +49,8 @@ const App = () => (
     authProvider={authProvider}
     dataProvider={dataProvider}
     dashboard={Dashboard}>
-        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate}/>
-        <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate}/>
+        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
+        <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon}/>
   </Admin>
 );
 

@@ -4,6 +4,8 @@ import {
 } from 'react-admin';
 import RichTextInput from 'ra-input-rich-text';
 
+import { usePermissions } from 'react-admin';
+import { Label } from '@mui/icons-material';
 
 
 const ProductCreate = props => {
@@ -19,15 +21,25 @@ const ProductCreate = props => {
 
     
     return (
+        <>
         <Create {...props} title='Create new product' onSuccess={onSuccess}>
-            <SimpleForm>
-                <TextInput source='title' />
+        {localStorage.getItem('role') === 'admin' ? (
+            <SimpleForm>            
+                <TextInput source='title' />         
                 <NumberInput source='price' step={0.01} />
                 <NumberInput source='discount' min={0} max={100} />
                 <TextInput source='image' type='url' />
                 <RichTextInput source='description' />
+           
             </SimpleForm>
+            ) :    
+            <p>No Access</p>
+        }
         </Create>
+
+        
+
+        </>
     );
     
 };
