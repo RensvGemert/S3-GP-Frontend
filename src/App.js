@@ -12,6 +12,8 @@ import { createTheme } from '@material-ui/core/styles';
 import Dashboard from './components/Dashboard';
 import PersonIcon from '@mui/icons-material/Person';
 import InventoryIcon from '@mui/icons-material/Inventory';
+import { FieldList } from "./components/FieldList";
+import { FieldCreate } from "./components/FieldCreate";
 
 const theme = createTheme({
   palette: {
@@ -21,9 +23,6 @@ const theme = createTheme({
         }
   },
 });
-import simpleRestProvider from 'ra-data-simple-rest';
-import { FieldList } from "./components/FieldList";
-import { FieldCreate } from "./components/FieldCreate";
 
 const fetchJson = (url, options = {}) => {
     if (!options.headers) {
