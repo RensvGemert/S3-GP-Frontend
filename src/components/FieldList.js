@@ -1,7 +1,7 @@
 import React from 'react'
 import { List, Datagrid, TextField, EditButton, DeleteButton, Filter, SearchInput, NumberField } from 'react-admin'
 
-const UserFilter = (props) => (<Filter {...props}>
+const FieldFilter = (props) => (<Filter {...props}>
   <SearchInput placeholder='User Email' source='email' resettable alwaysOn />
 </Filter>)
 
@@ -15,3 +15,5 @@ export const FieldList = props => (
         </Datagrid>
     </List>
 );
+
+export default FieldList
