@@ -14,7 +14,6 @@ const ProductCreate = props => {
         notify(`Product created!`);
         refresh();
     };
-
     
     return (
         <>

@@ -13,6 +13,8 @@ import Dashboard from './components/Dashboard';
 import FieldList from './components/FieldList'
 import PersonIcon from '@mui/icons-material/Person';
 import InventoryIcon from '@mui/icons-material/Inventory';
+import { FieldList } from "./components/FieldList";
+import { FieldCreate } from "./components/FieldCreate";
 
 const theme = createTheme({
   palette: {
@@ -49,7 +51,7 @@ const App = () => (
     dashboard={Dashboard}>
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
         <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon}/>
-        <Resource name="fields" list={FieldList} />
+        <Resource name="fields" list={FieldList} create={FieldCreate} />
   </Admin>
 );
 
