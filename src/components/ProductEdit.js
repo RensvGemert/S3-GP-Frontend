@@ -15,11 +15,10 @@ const ProductEdit = (props) => (
             <RichTextInput source='description' />
             <ArrayInput source ='productFields' >
                     <SimpleFormIterator disableReordering>
-                        <TextInput source='name' label='Productfield name' />
-                        <TextInput source='value' label='Productfield value' />
                         <ReferenceInput source='fieldId' reference="fields" label="Productfield ID" >
                             <SelectInput optionText="name"  />
                         </ReferenceInput>
+                        <TextInput source='value' label='Productfield value' />
                     </SimpleFormIterator>
                 </ArrayInput>
         </SimpleForm>
