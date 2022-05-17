@@ -1,30 +1,26 @@
 export default {
-    login: ({ username, password }) => {
+    login: async ({ username, password }) => {
         const request = new Request('http://localhost:8080/api/users/login', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
         });
 
-        if (username === 'retailer@gmail.com' && password === 'retailer') {
-            localStorage.setItem('role', '1');
+        const response = await fetch(request);
+        
+        if (response.status < 200 || response.status >= 300) {
+            throw new Error(response.statusText);
         }
+        
+        const data = await response.json();
 
-        if (username === 'supplier@gmail.com' && password === 'supplier') {
-            localStorage.setItem('role', '2');
-        }
-
-        return fetch(request)
-            .then(response => {
-                if (response.status < 200 || response.status >= 300) {
-                    throw new Error(response.statusText);
-                }
-                localStorage.setItem('username', username);
-                return response.json();
-            })
-            .then(({ token }) => {
-                localStorage.setItem('token', token);
-            });
+        localStorage.setItem('username', username);
+        localStorage.setItem('userId', data.userId);
+        localStorage.setItem('userRole', data.userRole);
+        localStorage.setItem('companyRole', data.companyRole);
+        
+        const { token } = data;
+        localStorage.setItem('token', token);
     },
     checkError: (error) => { /* ... */ },
     checkAuth: () => {
@@ -35,6 +31,9 @@ export default {
         localStorage.removeItem('permissions');
         localStorage.removeItem('role');
         localStorage.removeItem('username');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userRole');
+        localStorage.removeItem('companyRole');
         return Promise.resolve();
     },
     getIdentity: () =>
