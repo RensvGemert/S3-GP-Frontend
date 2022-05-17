@@ -15,7 +15,7 @@ const Dashboard = () => (
 
     <Card style={{marginBottom: '8px'}}>
         <CardContent>
-            <h1>Welcome {localStorage.getItem('role')}</h1>     
+            <h1>Welcome {localStorage.getItem('username')}</h1>     
             <p>Today it is {date}</p>           
         </CardContent>
     </Card>
