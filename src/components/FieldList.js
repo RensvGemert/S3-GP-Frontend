@@ -10,6 +10,7 @@ export const FieldList = props => (
         <Datagrid>
             <NumberField source="id" />
             <TextField source="name" />
+            <EditButton basePath='/fields' />
             {/* <DeleteButton basePath='/fields' /> */}
         </Datagrid>
     </List>
