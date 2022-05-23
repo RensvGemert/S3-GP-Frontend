@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Datagrid, TextField, NumberField, EditButton, DeleteButton, Filter, SearchInput, RichTextField  } from 'react-admin';
+import { List, Datagrid, TextField, NumberField, EditButton, DeleteButton, Filter, SearchInput, RichTextField, ReferenceArrayField, SingleFieldList, ChipField  } from 'react-admin';
 
 const ProductFilter = (props) => (<Filter {...props}>
   <SearchInput placeholder='Product Name' source='title' resettable alwaysOn />
@@ -15,6 +15,11 @@ function ProductList(props) {
             <NumberField source='discount' />
             <TextField source='image' type='url' />
             <RichTextField multiline="true" source='description'/>
+            <ReferenceArrayField label="Categories" reference="categories" source="categories"  >
+              <SingleFieldList>
+                <ChipField source="name" />
+              </SingleFieldList>
+            </ReferenceArrayField>
             <EditButton basePath='/products' />
             <DeleteButton basePath='/products' />
         </Datagrid>

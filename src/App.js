@@ -1,5 +1,5 @@
 import React from "react";
-import { Admin, Resource , fetchUtils} from "react-admin";
+import { Admin, Resource, fetchUtils, ListGuesser, EditGuesser} from "react-admin";
 import authProvider from "./authProvider";
 import jsonServerProvider from 'ra-data-json-server';
 import ProductList from './components/ProductList'
@@ -15,6 +15,9 @@ import PersonIcon from '@mui/icons-material/Person';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import { FieldCreate } from "./components/FieldCreate";
 import FieldEdit from "./components/FieldEdit";
+import { CategoryList } from "./components/CategoryList";
+import { CategoryEdit } from "./components/CategoryEdit";
+import { CategoryCreate } from "./components/CategoryCreate";
 
 const theme = createTheme({
   palette: {
@@ -52,6 +55,8 @@ const App = () => (
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
         <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon}/>
         <Resource name="fields" list={FieldList} create={FieldCreate} edit={FieldEdit} />
+        <Resource name="categories" list={CategoryList} edit={CategoryEdit} create={CategoryCreate}  />
+        <Resource name="productcategories" />
   </Admin>
 );
 
