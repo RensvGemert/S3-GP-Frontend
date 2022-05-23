@@ -18,6 +18,7 @@ export default {
         localStorage.setItem('userId', data.userId);
         localStorage.setItem('userRole', data.userRole);
         localStorage.setItem('companyRole', data.companyRole);
+        localStorage.setItem('companyId', data.companyId);
         
         const { token } = data;
         localStorage.setItem('token', token);
@@ -27,13 +28,7 @@ export default {
         return localStorage.getItem('token') ? Promise.resolve() : Promise.reject();
     },
     logout: () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('permissions');
-        localStorage.removeItem('role');
-        localStorage.removeItem('username');
-        localStorage.removeItem('userId');
-        localStorage.removeItem('userRole');
-        localStorage.removeItem('companyRole');
+        localStorage.clear();
         return Promise.resolve();
     },
     getIdentity: () =>
