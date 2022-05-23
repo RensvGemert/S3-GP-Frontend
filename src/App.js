@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Admin, Resource , fetchUtils} from "react-admin";
 import authProvider from "./authProvider";
 import jsonServerProvider from 'ra-data-json-server';
@@ -14,6 +14,7 @@ import FieldList from './components/FieldList'
 import PersonIcon from '@mui/icons-material/Person';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import { FieldCreate } from "./components/FieldCreate";
+import FieldEdit from "./components/FieldEdit";
 
 const theme = createTheme({
   palette: {
@@ -41,6 +42,8 @@ const httpClient = (url, options = {}) => {
   return fetchUtils.fetchJson(url, options);
 };
 
+const userCompanyId = localStorage.getItem(`companyId`);
+const productsByCompany = `company/${userCompanyId}/products`;
 const dataProvider = jsonServerProvider('http://localhost:8080/api', fetchJson, httpClient);
 
 const App = () => (
@@ -49,8 +52,8 @@ const App = () => (
     dataProvider={dataProvider}
     dashboard={Dashboard}>
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
-        <Resource name="products" list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon}/>
-        <Resource name="fields" list={FieldList} create={FieldCreate} />
+        <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon}/>
+        <Resource name="fields" list={FieldList} create={FieldCreate} edit={FieldEdit} />
   </Admin>
 );
 

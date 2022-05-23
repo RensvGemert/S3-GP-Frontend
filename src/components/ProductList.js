@@ -15,12 +15,11 @@ function ProductList(props) {
             <NumberField source='discount' />
             <TextField source='image' type='url' />
             <RichTextField multiline="true" source='description'/>
-            <EditButton basePath='/products' />
-            <DeleteButton basePath='/products' />
+            <EditButton basePath={props.basePath} />
+            <DeleteButton basePath={props.basePath} />
         </Datagrid>
     </List>
   );
-  
 }
 
 export default ProductList

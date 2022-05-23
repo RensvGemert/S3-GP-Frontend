@@ -3,6 +3,7 @@ import {
     Create, useNotify, useRefresh, useRedirect, TextInput, NumberInput, SimpleForm, ArrayInput, SimpleFormIterator, SelectInput, ReferenceInput
 } from 'react-admin';
 import RichTextInput from 'ra-input-rich-text';
+import userCompanyId from './api-redirects/userCompanyId';
 
 const ProductCreate = props => {
     const notify = useNotify();
@@ -10,7 +11,7 @@ const ProductCreate = props => {
     const redirect = useRedirect();
 
     const onSuccess = ({data}) => {
-        redirect(`/products/${data.id}`);
+        redirect(`/company/${data.companyId}/products`);
         notify(`Product created!`);
         refresh();
     };
@@ -18,7 +19,7 @@ const ProductCreate = props => {
     return (
         <>
         <Create {...props} title='Create new product' onSuccess={onSuccess}>
-        {localStorage.getItem('role') === '2' ? (
+        {localStorage.getItem('userRole') === '1' ? (
             <SimpleForm>            
                 <TextInput source='title' />         
                 <NumberInput source='price' step={0.01} />
@@ -28,24 +29,20 @@ const ProductCreate = props => {
 
                 <ArrayInput source ='productFields' >
                     <SimpleFormIterator disableReordering>
-                        <TextInput source='name' label='Productfield name'/>
-                        <TextInput source='value' label='Productfield value' />
                         <ReferenceInput source='fieldId' reference="fields" label="Productfield ID">
                             <SelectInput optionText="name" />
                         </ReferenceInput>
+                        <TextInput source='value' label='Productfield value' />
                     </SimpleFormIterator>
                 </ArrayInput>
+                <TextInput type='hidden' label='' source='companyId' defaultValue={userCompanyId()}/> 
             </SimpleForm>
             ) :    
             <p>No Access</p>
         }
         </Create>
-
-        
-
         </>
-    );
-    
+    ); 
 };
 
 export default ProductCreate
