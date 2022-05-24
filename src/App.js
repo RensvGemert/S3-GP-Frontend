@@ -80,6 +80,9 @@ const App = () => {
       dashboard={Dashboard}>
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
         <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon} />
+        <Resource name="fields" />
+        <Resource name="categories" />
+        <Resource name="productcategories" />
     </Admin>
     );
   }

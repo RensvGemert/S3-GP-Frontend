@@ -19,7 +19,6 @@ const ProductCreate = props => {
     return (
         <>
         <Create {...props} title='Create new product' onSuccess={onSuccess}>
-        {localStorage.getItem('userRole') === '1' ? (
             <SimpleForm>            
                 <TextInput source='title' />         
                 <NumberInput source='price' step={0.01} />
@@ -39,9 +38,6 @@ const ProductCreate = props => {
                 </ArrayInput>
                 <TextInput type='hidden' label='' source='companyId' defaultValue={userCompanyId()}/> 
             </SimpleForm>
-            ) :    
-            <p>No Access</p>
-        }
         </Create>
         </>
     ); 
