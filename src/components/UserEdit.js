@@ -6,7 +6,7 @@ import {
 const UserEdit = (props) => (
     <Edit {...props}>
         <div>
-        <SimpleForm>
+        <SimpleForm >
             <TextInput disabled source='id' />
             <TextInput source='name' />
             <TextInput source='email' />

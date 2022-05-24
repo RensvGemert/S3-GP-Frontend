@@ -27,31 +27,44 @@ const UserCreate = (props) => {
          redirect: useRedirect()
     }
     */
-   var hash;
-    function change(password){
+//    var hashedpwd = (function () {
+//     var egg = document.getElementById('password').value; 
+//         bcrypt.hash(egg, 10, (err, hash) => {
+//         if (err) {
+//             return err;
+//         }
+//         console.log(hash);
+//         return hash;
+//         })
+//     })();  
+
+var response = ""
+
+    function change(){
         var egg = document.getElementById('password').value; 
-        console.log(egg)
-        bcrypt.hash(egg, 10, (err, hash) => {
+        bcrypt.hash(egg, 10, (err, hashedpwd) => {
             if (err) {
+                return err;
                 console.error(err);
             }
-            console.log(hash);
-            console.log(document.getElementById('password').value);
-            document.getElementById('password').value = hash;
-            
+            console.log(hashedpwd);
+            return hashedpwd;
             })
     }
+
+   response = change;
+   
     const transform = data => ({
         ...data,
-        password: `${document.getElementById('password').value}`,
+        password: `${this.hashedpwd}`
     });
     return ( 
-        <Create {...props} title='Create new user'  ons>
-            <SimpleForm  onSubmit={change({})}>
+        <Create {...props} title='Create new user' transform={transform}>
+            <SimpleForm >
                 <TextInput disabled source='id' />
                 <TextInput source='name' />
                 <TextInput source='email' />
-                <TextInput name='password' source='password'  />
+                <TextInput source='password' onChange={change}/>
             </SimpleForm >
         </Create >
      ); 
