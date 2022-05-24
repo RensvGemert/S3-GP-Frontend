@@ -16,7 +16,7 @@ function ProductList(props) {
         <ImageField source='image' type='url' sortable={false}/>
         <RichTextField multiline="true" source='description'sortable={false} />
         <ReferenceArrayField label="Categories" reference="categories" source="categories" sortable={false} >
-          <SingleFieldList>
+          <SingleFieldList linkType=""  >
             <ChipField source="name" sortable={false}/>
           </SingleFieldList>
         </ReferenceArrayField>
