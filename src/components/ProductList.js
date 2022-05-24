@@ -20,12 +20,11 @@ function ProductList(props) {
                 <ChipField source="name" />
               </SingleFieldList>
             </ReferenceArrayField>
-            <EditButton basePath='/products' />
-            <DeleteButton basePath='/products' />
+            <EditButton basePath={props.basePath} />
+            <DeleteButton basePath={props.basePath} />
         </Datagrid>
     </List>
   );
-  
 }
 
 export default ProductList
