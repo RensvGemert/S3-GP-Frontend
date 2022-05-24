@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Edit, SimpleForm, TextInput, NumberInput, ArrayInput, SimpleFormIterator, SelectInput, ReferenceInput
+    Edit, SimpleForm, TextInput, NumberInput, ArrayInput, SimpleFormIterator, SelectInput, ReferenceInput, ReferenceArrayInput, SelectArrayInput
 } from 'react-admin';
 import RichTextInput from 'ra-input-rich-text';
 
@@ -13,6 +13,9 @@ const ProductEdit = (props) => (
             <NumberInput source='discount' min={0} max={100} />
             <TextInput source='image' type='url' />
             <RichTextInput source='description' />
+            <ReferenceArrayInput source="categories" reference="categories">
+                <SelectArrayInput optionText="name" />
+            </ReferenceArrayInput>
             <ArrayInput source ='productFields' >
                     <SimpleFormIterator disableReordering>
                         <ReferenceInput source='fieldId' reference="fields" label="Productfield ID" >
