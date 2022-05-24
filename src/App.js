@@ -47,6 +47,7 @@ const httpClient = (url, options = {}) => {
 
 const userCompanyId = localStorage.getItem(`companyId`);
 const productsByCompany = `company/${userCompanyId}/products`;
+const allProductsForRetailer = `products/all`;
 const dataProvider = jsonServerProvider('http://localhost:8080/api', fetchJson, httpClient);
 
 const companyId = localStorage.getItem('companyId');
@@ -67,6 +68,7 @@ const App = () => {
         <Resource name="fields" list={FieldList} create={FieldCreate} edit={FieldEdit} />
         <Resource name="categories" list={CategoryList} edit={CategoryEdit} create={CategoryCreate} />
         <Resource name="productcategories" />
+        <Resource name="companies" />
     </Admin>
     );
   }
@@ -83,6 +85,7 @@ const App = () => {
         <Resource name="fields" />
         <Resource name="categories" />
         <Resource name="productcategories" />
+        <Resource name="companies" />
     </Admin>
     );
   }
@@ -95,7 +98,11 @@ const App = () => {
       dataProvider={dataProvider}
       dashboard={Dashboard}>
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
-        <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} icon={InventoryIcon} />
+        <Resource name={allProductsForRetailer} options={{ label: 'Products' }} list={ProductList} icon={InventoryIcon} />
+        <Resource name="fields" />
+        <Resource name="categories" />
+        <Resource name="productcategories" />
+        <Resource name="companies" />
     </Admin>
     );
   }
@@ -107,6 +114,7 @@ const App = () => {
       dashboard={Dashboard}>
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
         <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} icon={InventoryIcon} />
+        <Resource name="companies" />
     </Admin>
     );
 
