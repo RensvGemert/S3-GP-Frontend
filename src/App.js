@@ -49,17 +49,69 @@ const userCompanyId = localStorage.getItem(`companyId`);
 const productsByCompany = `company/${userCompanyId}/products`;
 const dataProvider = jsonServerProvider('http://localhost:8080/api', fetchJson, httpClient);
 
-const App = () => (
-  <Admin theme={theme} 
-    authProvider={authProvider}
-    dataProvider={dataProvider}
-    dashboard={Dashboard}>
-        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
-        <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon}/>
-        <Resource name="fields" list={FieldList} create={FieldCreate} edit={FieldEdit} />
-        <Resource name="categories" list={CategoryList} edit={CategoryEdit} create={CategoryCreate}  />
-        <Resource name="productcategories" />
-  </Admin>
-);
+const companyId = localStorage.getItem('companyId');
 
+const companyRole = localStorage.getItem('companyRole');
+
+const App = () => {
+
+  // if admin
+  if(companyId === '1') {
+    return (
+    <Admin theme={theme} 
+      authProvider={authProvider}
+      dataProvider={dataProvider}
+      dashboard={Dashboard}>
+        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
+        <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon} />
+        <Resource name="fields" list={FieldList} create={FieldCreate} edit={FieldEdit} />
+        <Resource name="categories" list={CategoryList} edit={CategoryEdit} create={CategoryCreate} />
+        <Resource name="productcategories" />
+    </Admin>
+    );
+  }
+
+  // if supplier
+  if(companyRole === '1') {
+    return (
+    <Admin theme={theme} 
+      authProvider={authProvider}
+      dataProvider={dataProvider}
+      dashboard={Dashboard}>
+        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
+        <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon} />
+    </Admin>
+    );
+  }
+
+  // if retailer
+  if(companyRole === '2') {
+  return (
+    <Admin theme={theme} 
+      authProvider={authProvider}
+      dataProvider={dataProvider}
+      dashboard={Dashboard}>
+        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
+        <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} icon={InventoryIcon} />
+    </Admin>
+    );
+  }
+
+  return (
+    <Admin theme={theme} 
+      authProvider={authProvider}
+      dataProvider={dataProvider}
+      dashboard={Dashboard}>
+        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
+        <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} icon={InventoryIcon} />
+    </Admin>
+    );
+
+}
 export default App;
+
+
+
+
+
+//  {/* if supplier of admin*/}
