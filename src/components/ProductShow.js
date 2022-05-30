@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    SimpleShowLayout, TextField, RichTextField, NumberField, ReferenceField, ArrayField, Show, ImageField, ChipField, Datagrid
+    SimpleShowLayout, TextField, RichTextField, NumberField, ReferenceField, ArrayField, Show, ImageField, ChipField, Datagrid, ReferenceArrayField, SingleFieldList
 } from 'react-admin';
 
 
@@ -18,8 +18,14 @@ const ProductShow = props => (
                     <TextField source="value" />
                 </Datagrid>
             </ArrayField>
-            <ReferenceField source="categories" reference="categories" link={false}><ChipField source="name" /></ReferenceField>
-            <ReferenceField source="companyId" reference="companies" link={false}><TextField source="name" /></ReferenceField>
+            <ReferenceArrayField source="categories" reference="categories" link={false}>
+                <SingleFieldList linkType="">
+                    <ChipField source="name" />
+                </SingleFieldList>
+            </ReferenceArrayField>
+            <ReferenceField source="companyId" reference="companies" link={false}>
+                <TextField source="name" />
+            </ReferenceField>
         </SimpleShowLayout>
     </Show>
 );
