@@ -2,6 +2,7 @@ import React from 'react'
 import {
     Create, TextInput, SimpleForm
 } from 'react-admin';
+import userCompanyId from "./api-redirects/userCompanyId"
 
 
 
@@ -21,12 +22,15 @@ const UserCreate = (props) => (
     }; */
 
     
+
+
     /* return ( */
         <Create {...props} title='Create new user' /* onSuccess={onSuccess} */>
             <SimpleForm>
-                <TextInput disabled source='id' />
                 <TextInput source='name' />
-                <TextInput source='email' />
+                <TextInput source='email' type="email" />
+                <TextInput source='password' type="password" />
+                <TextInput disabled source='companyId' defaultValue={localStorage.getItem(`companyId`)} />
             </SimpleForm>
         </Create>
     /* ); */

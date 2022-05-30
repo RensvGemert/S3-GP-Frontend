@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Edit, SimpleForm, TextInput,
+    Edit, SimpleForm, TextInput, NumberInput
 } from 'react-admin';
 
 const UserEdit = (props) => (
@@ -9,7 +9,9 @@ const UserEdit = (props) => (
         <SimpleForm>
             <TextInput disabled source='id' />
             <TextInput source='name' />
-            <TextInput source='email' />
+            <TextInput source='email' type="email" />
+            <TextInput source='password' type="password" />
+            <TextInput disabled source='companyId' />
         </SimpleForm>
         </div>   
     </Edit>
