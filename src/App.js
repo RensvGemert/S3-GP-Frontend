@@ -18,6 +18,7 @@ import FieldEdit from "./components/FieldEdit";
 import { CategoryList } from "./components/CategoryList";
 import { CategoryEdit } from "./components/CategoryEdit";
 import { CategoryCreate } from "./components/CategoryCreate";
+import ProductShow from "./components/ProductShow";
 
 const theme = createTheme({
   palette: {
@@ -47,6 +48,7 @@ const httpClient = (url, options = {}) => {
 
 const userCompanyId = localStorage.getItem(`companyId`);
 const productsByCompany = `company/${userCompanyId}/products`;
+const usersByCompany = `company/${userCompanyId}/users`;
 const allProductsForRetailer = `products/all`;
 const dataProvider = jsonServerProvider('http://localhost:8080/api', fetchJson, httpClient);
 
@@ -61,8 +63,8 @@ const App = () => {
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
-        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
-        <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon} />
+        <Resource name={usersByCompany} options={{ label: 'Users' }} list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
+        <Resource name={allProductsForRetailer} options={{ label: 'Products' }} list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon} />
         <Resource name="fields" list={FieldList} create={FieldCreate} edit={FieldEdit} />
         <Resource name="categories" list={CategoryList} edit={CategoryEdit} create={CategoryCreate} />
         <Resource name="productcategories" />
@@ -78,7 +80,7 @@ const App = () => {
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
-        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
+        <Resource name={usersByCompany} options={{ label: 'Users' }} list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
         <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon} />
         <Resource name="fields" />
         <Resource name="categories" />
@@ -95,8 +97,8 @@ const App = () => {
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
-        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
-        <Resource name={allProductsForRetailer} options={{ label: 'Products' }} list={ProductList} icon={InventoryIcon} />
+        <Resource name={usersByCompany} options={{ label: 'Users' }} list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
+        <Resource name={allProductsForRetailer} options={{ label: 'Products' }} list={ProductList} show={ProductShow} icon={InventoryIcon} />
         <Resource name="fields" />
         <Resource name="categories" />
         <Resource name="productcategories" />
@@ -110,7 +112,7 @@ const App = () => {
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
-        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
+        <Resource name={usersByCompany} options={{ label: 'Users' }} list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
         <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} icon={InventoryIcon} />
         <Resource name="companies" />
     </Admin>
