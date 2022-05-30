@@ -8,7 +8,7 @@ function UserEdit(props) {
     if(companyId === '1') 
     {
         return (
-            <Edit {...props} title='Edit user' /* onSuccess={onSuccess} */>
+            <Edit {...props}>
                 <SimpleForm>
                     <TextInput source='name' />
                     <TextInput source='email' type="email" />
@@ -23,7 +23,7 @@ function UserEdit(props) {
     else
     {
         return (
-            <Edit {...props} title='Edit user' /* onSuccess={onSuccess} */>
+            <Edit {...props}>
                 <SimpleForm>
                     <TextInput source='name' />
                     <TextInput source='email' type="email" />

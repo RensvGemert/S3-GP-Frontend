@@ -9,11 +9,11 @@ function UserList(props) {
   return (
     <List {...props} filters={<UserFilter />}>
         <Datagrid>
-            <TextField source='id' />
-            <TextField source='name' />
-            <TextField source='email' />
-            <EditButton basePath='/users' />
-            <DeleteButton basePath='/users' />
+            <TextField source='id' sortable={false} />
+            <TextField source='name' sortable={false} />
+            <TextField source='email' sortable={false} />
+            <EditButton basePath={props.basePath} />
+            <DeleteButton basePath={props.basePath} />
         </Datagrid>
     </List>
   );
