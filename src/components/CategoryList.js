@@ -8,8 +8,8 @@ const CategoryFilter = (props) => (<Filter {...props}>
 export const CategoryList = props => (
     <List {...props} filters={<CategoryFilter />}>
         <Datagrid>
-            <TextField source="id" />
-            <TextField source="name" />
+            <TextField source="id" sortable={false} />
+            <TextField source="name" sortable={false} />
             <EditButton basePath='/categories' />
             <DeleteButton basePath='/categories' />
         </Datagrid>

@@ -1,18 +1,40 @@
 import React from 'react'
 import {
-    Edit, SimpleForm, TextInput,
+    Edit, SimpleForm, TextInput, ReferenceInput, SelectInput
 } from 'react-admin';
+const companyId = localStorage.getItem('companyId');
 
-const UserEdit = (props) => (
-    <Edit {...props}>
-        <div>
-        <SimpleForm>
-            <TextInput disabled source='id' />
-            <TextInput source='name' />
-            <TextInput source='email' />
-        </SimpleForm>
-        </div>   
-    </Edit>
-);
+function UserEdit(props) {
+    if(companyId === '1') 
+    {
+        return (
+            <Edit {...props}>
+                <SimpleForm>
+                    <TextInput source='name' />
+                    <TextInput source='email' type="email" />
+                    <TextInput source='password' type="password" />
+                    <ReferenceInput source='companyId' reference="companies" label="Company">
+                        <SelectInput optionText="name" />
+                    </ReferenceInput>
+                </SimpleForm>
+            </Edit>
+        );
+    }
+    else
+    {
+        return (
+            <Edit {...props}>
+                <SimpleForm>
+                    <TextInput source='name' />
+                    <TextInput source='email' type="email" />
+                    <TextInput source='password' type="password" />
+                    <TextInput disabled source='companyId' defaultValue={localStorage.getItem(`companyId`)} />
+                </SimpleForm>
+            </Edit>
+        );
+    }
+    
+    
+}
 
 export default UserEdit

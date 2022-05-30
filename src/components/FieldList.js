@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Datagrid, TextField, EditButton, DeleteButton, Filter, SearchInput, NumberField } from 'react-admin'
+import { List, Datagrid, TextField, EditButton, Filter, SearchInput, NumberField } from 'react-admin'
 
 const FieldFilter = (props) => (<Filter {...props}>
   <SearchInput placeholder='Field name' source='name' resettable alwaysOn />
@@ -8,10 +8,9 @@ const FieldFilter = (props) => (<Filter {...props}>
 export const FieldList = props => (
     <List {...props} filters={<FieldFilter />}>
         <Datagrid>
-            <NumberField source="id" />
-            <TextField source="name" />
+            <NumberField source="id" sortable={false} />
+            <TextField source="name" sortable={false} />
             <EditButton basePath='/fields' />
-            {/* <DeleteButton basePath='/fields' /> */}
         </Datagrid>
     </List>
 );
