@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Admin, Resource , fetchUtils} from "react-admin";
 import authProvider from "./authProvider";
 import jsonServerProvider from 'ra-data-json-server';
@@ -51,11 +51,9 @@ const allProductsForRetailer = `products/all`;
 const dataProvider = jsonServerProvider('http://localhost:8080/api', fetchJson, httpClient);
 
 const companyId = localStorage.getItem('companyId');
-
 const companyRole = localStorage.getItem('companyRole');
 
 const App = () => {
-
   // if admin
   if(companyId === '1') {
     return (
@@ -120,9 +118,3 @@ const App = () => {
 
 }
 export default App;
-
-
-
-
-
-//  {/* if supplier of admin*/}
