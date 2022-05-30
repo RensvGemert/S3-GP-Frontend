@@ -1,0 +1,44 @@
+version: '3.3'
+services:
+  pim_database:
+    image: mysql
+    networks:
+      - pimnetwork
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=pimdatabase
+    ports:
+      - 3306:3306
+    volumes:
+      - my-db:/var/lib/mysql
+
+  frontend:
+    image: ghcr.io/RensvGemert/S3-GP-Frontend:master
+    restart: always
+    ports: 
+      - $REACT_LOCAL_PORT:$REACT_DOCKER_PORT
+
+  backend: 
+    image: ghcr.io/RensvGemert/S3-GP-Backend:master
+    ports:
+      - 8080:8080
+    networks:
+      - pimnetwork
+    depends_on:
+      - pimdatabase
+    restart: always
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:mysql://pimdatabase/pimdatabase",
+        "spring.datasource.username" : "$MYSQLDB_USER",
+        "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+        "spring.jpa.hibernate.ddl-auto" : "update"
+        }'
+# Names our volume
+volumes:
+  my-db:
+
+networks:
+  pimnetwork: 
