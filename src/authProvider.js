@@ -1,4 +1,4 @@
-export default {
+const authProvider = {
     login: async ({ username, password }) => {
         const request = new Request('http://localhost:8080/api/users/login', {
             method: 'POST',
@@ -13,15 +13,20 @@ export default {
         }
         
         const data = await response.json();
-
+        localStorage.setItem('companyId', data.companyId);
         localStorage.setItem('username', username);
         localStorage.setItem('userId', data.userId);
         localStorage.setItem('userRole', data.userRole);
         localStorage.setItem('companyRole', data.companyRole);
-        localStorage.setItem('companyId', data.companyId);
         
         const { token } = data;
         localStorage.setItem('token', token);
+
+        function refreshPage() {
+            window.location.reload(false);
+          }
+
+        setTimeout(() => refreshPage(), 50);
     },
     checkError: (error) => { /* ... */ },
     checkAuth: () => {
@@ -41,3 +46,5 @@ export default {
         return role ? Promise.resolve(role) : Promise.reject();
     }
 };
+
+export default authProvider;
