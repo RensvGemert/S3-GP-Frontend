@@ -50,7 +50,7 @@ const userCompanyId = localStorage.getItem(`companyId`);
 const productsByCompany = `company/${userCompanyId}/products`;
 const usersByCompany = `company/${userCompanyId}/users`;
 const allProductsForRetailer = `products/all`;
-const dataProvider = jsonServerProvider('https://piadadb.shiruvaaa.net/api', fetchJson, httpClient);
+const dataProvider = jsonServerProvider('http://localhost:8080/api', fetchJson, httpClient);
 
 const companyId = localStorage.getItem('companyId');
 const companyRole = localStorage.getItem('companyRole');
