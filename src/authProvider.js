@@ -3,8 +3,7 @@ const authProvider = {
         const request = new Request('https://piadadb.shiruvaaa.net/api/users/login', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
-            headers: new Headers({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}),
-
+            headers: new Headers({ 'Content-Type': 'application/json'}),
         });
 
         const response = await fetch(request);
