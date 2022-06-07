@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  pim_database:
+  pimdatabase:
     image: mysql
     networks:
       - pimnetwork
@@ -14,13 +14,13 @@ services:
       - my-db:/var/lib/mysql
 
   frontend:
-    image: ghcr.io/RensvGemert/S3-GP-Frontend:master
+    image: ghcr.io/rensvgemert/s3-gp-frontend:master
     restart: always
     ports: 
       - $REACT_LOCAL_PORT:$REACT_DOCKER_PORT
 
   backend: 
-    image: ghcr.io/RensvGemert/S3-GP-Backend:master
+    image: ghcr.io/rensvgemert/s3-gp-backend:main
     ports:
       - 8080:8080
     networks:
