@@ -6,10 +6,10 @@ const FieldFilter = (props) => (<Filter {...props}>
 </Filter>)
 
 export const FieldList = props => (
-    <List {...props} filters={<FieldFilter />}>
+    <List {...props} filters={<FieldFilter />} pagination={false} sort={{field: 'name', order: 'ASC'}} >
         <Datagrid>
-            <NumberField source="id" sortable={false} />
-            <TextField source="name" sortable={false} />
+            {/* <NumberField source="id" /> */}
+            <TextField source="name" />
             <EditButton basePath='/fields' />
         </Datagrid>
     </List>

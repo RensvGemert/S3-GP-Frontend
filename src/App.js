@@ -1,5 +1,5 @@
 import React from "react";
-import { Admin, Resource , fetchUtils} from "react-admin";
+import { Admin, Resource , fetchUtils } from "react-admin";
 import authProvider from "./authProvider";
 import jsonServerProvider from 'ra-data-json-server';
 import ProductList from './components/ProductList'
