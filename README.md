@@ -11,6 +11,8 @@ Piada PIM is a web-platform  which is a part of the Piada PIM project used as a 
 
 This project is developed by S3 students at Fontys University of Applied Science and is mainly used as a school project.
 
+<br />
+
 ## Installation
 
 ### Local installation
