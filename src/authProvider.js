@@ -1,11 +1,11 @@
 const authProvider = {
     login: async ({ username, password }) => {
-        const request = new Request('https://piadadb.shiruvaaa.net/api/users/login', {
+        const request = new Request('http://localhost:8080/api/users/login', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: new Headers({ 'Content-Type': 'application/json'}),
         });
-
+ 
         const response = await fetch(request);
         
         if (response.status < 200 || response.status >= 300) {

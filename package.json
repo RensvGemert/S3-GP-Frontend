@@ -1,6 +1,6 @@
 {
-  "name": "test-admin",
-  "version": "0.1.0",
+  "name": "piada-pim",
+  "version": "0.9.0",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.10.0",
