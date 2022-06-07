@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Piada PIM
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![](https://img.shields.io/github/package-json/v/RensvGemert/S3-GP-Frontend) ![](https://img.shields.io/github/issues/RensvGemert/S3-GP-Frontend) ![](https://img.shields.io/github/last-commit/RensvGemert/S3-GP-Frontend)
+<br />
+[![Docker](https://github.com/RensvGemert/S3-GP-Frontend/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/RensvGemert/S3-GP-Frontend/actions/workflows/docker-publish.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=RensvGemert_S3-GP-Frontend&metric=alert_status)](https://sonarcloud.io/project/overview?id=RensvGemert_S3-GP-Frontend)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=RensvGemert_S3-GP-Frontend&metric=bugs)](https://sonarcloud.io/project/overview?id=RensvGemert_S3-GP-Frontend)
 
-## Available Scripts
 
-In the project directory, you can run:
+Piada PIM is a web-platform  which is a part of the Piada PIM project used as a *collaboration platform for product content management* within ©World of Content. (See our [Backend](https://github.com/RensvGemert/S3-GP-Backend) here.)
 
-### `npm start`
+This project is developed by S3 students at Fontys University of Applied Science and is mainly used as a school project.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Local installation
 
-### `npm test`
+1. After cloning the project, install all packages with `npm i`
+2. Use `npm start` to start the project in development mode.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Docker
 
-### `npm run build`
+With the help of Github Actions, we automatically create a package on the master branch, which you can use as an image in your docker compose.
+An official example can be found down below (this is not perfect and will be updated when deemed necessary).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```yaml
+version: '3.3'
+services:
+  pimdatabase:
+    image: mysql
+    networks:
+      - pimnetwork
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=pimdatabase
+    ports:
+      - 3306:3306
+    volumes:
+      - my-db:/var/lib/mysql
+  frontend:
+    image: ghcr.io/rensvgemert/s3-gp-frontend:master
+    restart: always
+    ports: 
+      - 3001:3000
+  backend: 
+    image: ghcr.io/rensvgemert/s3-gp-backend:main
+    ports:
+      - 8080:8080
+    networks:
+      - pimnetwork
+    depends_on:
+      - pimdatabase
+    restart: always
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:mysql://pimdatabase/pimdatabase",
+        "spring.datasource.username" : "root",
+        "spring.datasource.password" : "password",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+        "spring.jpa.hibernate.ddl-auto" : "update"
+        }'
+# Names our volume
+volumes:
+  my-db:
+networks:
+  pimnetwork: 
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This compose layout consists of 3 services:
+ - The React frontend
+ - The Java backend
+ - The MySQL Database
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-### `npm run eject`
+Please make sure to update tests as appropriate.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+[MIT](https://github.com/RensvGemert/S3-GP-Frontend/blob/master/LICENSE)

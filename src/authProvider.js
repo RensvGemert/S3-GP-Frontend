@@ -3,8 +3,7 @@ const authProvider = {
         const request = new Request('http://localhost:8080/api/users/login', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
-            headers: new Headers({ 'Content-Type': 'application/json' }),
-
+            headers: new Headers({ 'Content-Type': 'application/json'}),
         });
  
         const response = await fetch(request);
