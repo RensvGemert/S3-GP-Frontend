@@ -8,7 +8,6 @@ import UserEdit from "./components/UserEdit";
 import ProductEdit from "./components/ProductEdit";
 import UserCreate from "./components/UserCreate";
 import ProductCreate from "./components/ProductCreate";
-import { createTheme } from '@material-ui/core/styles';
 import Dashboard from './components/Dashboard';
 import FieldList from './components/FieldList'
 import PersonIcon from '@mui/icons-material/Person';
@@ -19,15 +18,6 @@ import { CategoryList } from "./components/CategoryList";
 import { CategoryEdit } from "./components/CategoryEdit";
 import { CategoryCreate } from "./components/CategoryCreate";
 import ProductShow from "./components/ProductShow";
-
-const theme = createTheme({
-  palette: {
-    type: 'dark', 
-        secondary: {
-            main: "#0089c1"
-        }
-  },
-});
 
 const fetchJson = (url, options = {}) => {
     if (!options.headers) {
@@ -59,7 +49,7 @@ const App = () => {
   // if admin
   if(companyId === '1') {
     return (
-    <Admin theme={theme} 
+    <Admin 
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
@@ -76,7 +66,7 @@ const App = () => {
   // if supplier
   if(companyRole === '1') {
     return (
-    <Admin theme={theme} 
+    <Admin 
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
@@ -93,7 +83,7 @@ const App = () => {
   // if retailer
   if(companyRole === '2') {
   return (
-    <Admin theme={theme} 
+    <Admin
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
@@ -108,7 +98,7 @@ const App = () => {
   }
 
   return (
-    <Admin theme={theme} 
+    <Admin 
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
