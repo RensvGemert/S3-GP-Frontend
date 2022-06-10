@@ -20,14 +20,6 @@ import { CategoryEdit } from "./components/CategoryEdit";
 import { CategoryCreate } from "./components/CategoryCreate";
 import ProductShow from "./components/ProductShow";
 
-const theme = createTheme({
-  palette: {
-    type: 'dark', 
-        secondary: {
-            main: "#0089c1"
-        }
-  },
-});
 
 const fetchJson = (url, options = {}) => {
     if (!options.headers) {
@@ -59,7 +51,7 @@ const App = () => {
   // if admin
   if(companyId === '1') {
     return (
-    <Admin theme={theme} 
+    <Admin
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
@@ -76,7 +68,7 @@ const App = () => {
   // if supplier
   if(companyRole === '1') {
     return (
-    <Admin theme={theme} 
+    <Admin
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
@@ -93,7 +85,7 @@ const App = () => {
   // if retailer
   if(companyRole === '2') {
   return (
-    <Admin theme={theme} 
+    <Admin 
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
@@ -108,7 +100,7 @@ const App = () => {
   }
 
   return (
-    <Admin theme={theme} 
+    <Admin
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
