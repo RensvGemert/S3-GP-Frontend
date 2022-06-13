@@ -19,6 +19,7 @@ import { CategoryEdit } from "./components/CategoryEdit";
 import { CategoryCreate } from "./components/CategoryCreate";
 import ProductShow from "./components/ProductShow";
 
+
 const fetchJson = (url, options = {}) => {
     if (!options.headers) {
         options.headers = new Headers({ Accept: 'application/json' });
@@ -49,7 +50,7 @@ const App = () => {
   // if admin
   if(companyId === '1') {
     return (
-    <Admin 
+    <Admin
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
@@ -66,7 +67,7 @@ const App = () => {
   // if supplier
   if(companyRole === '1') {
     return (
-    <Admin 
+    <Admin
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
@@ -98,7 +99,7 @@ const App = () => {
   }
 
   return (
-    <Admin 
+    <Admin
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>

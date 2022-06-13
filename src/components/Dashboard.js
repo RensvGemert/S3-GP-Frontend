@@ -11,7 +11,7 @@ const userCompanyId = localStorage.getItem(`companyId`);
 
 
 function Dashboard() {
-if(localStorage.getItem(`companyRole`) === '1' || localStorage.getItem(`companyId`) !== '1'){
+if((localStorage.getItem(`companyRole`) === '1') || (localStorage.getItem(`companyId`) === '1')){
     return(
     <>
     <Card style={{marginBottom: '8px'}}>
