@@ -55,7 +55,7 @@ const App = () => {
       dataProvider={dataProvider}
       dashboard={Dashboard}>
         <Resource name={usersByCompany} options={{ label: 'Users' }} list={UserList} edit={UserEdit} create={UserCreate} icon={PersonIcon} />
-        <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} edit={ProductEdit} create={ProductCreate} icon={InventoryIcon} />
+        <Resource name={productsByCompany} options={{ label: 'Products' }} list={ProductList} edit={ProductEdit} icon={InventoryIcon} />
         <Resource name="fields" list={FieldList} create={FieldCreate} edit={FieldEdit} />
         <Resource name="categories" list={CategoryList} edit={CategoryEdit} create={CategoryCreate} />
         <Resource name="productcategories" />

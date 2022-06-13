@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Datagrid, TextField, EditButton, Filter, SearchInput, NumberField } from 'react-admin'
+import { List, Datagrid, TextField, EditButton, Filter, SearchInput } from 'react-admin'
 
 const FieldFilter = (props) => (<Filter {...props}>
   <SearchInput placeholder='Field name' source='name' resettable alwaysOn />

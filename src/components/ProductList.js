@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Datagrid, TextInput, TextField, NumberField, ReferenceField, EditButton, DeleteButton, ShowButton, Filter, SearchInput, RichTextField, ReferenceArrayField, SingleFieldList, ChipField, ImageField, ReferenceInput, SelectInput } from 'react-admin';
+import { List, Datagrid, TextInput, TextField, NumberField, ReferenceField, EditButton, DeleteButton, ShowButton, Filter, RichTextField, ReferenceArrayField, SingleFieldList, ChipField, ImageField, ReferenceInput, SelectInput } from 'react-admin';
 
 const companyId = localStorage.getItem('companyId');
 const companyRole = localStorage.getItem('companyRole');
