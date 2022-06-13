@@ -84,7 +84,7 @@ const App = () => {
   // if retailer
   if(companyRole === '2') {
   return (
-    <Admin 
+    <Admin
       authProvider={authProvider}
       dataProvider={dataProvider}
       dashboard={Dashboard}>
